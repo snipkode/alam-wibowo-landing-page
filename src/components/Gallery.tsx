@@ -130,6 +130,13 @@ const CategoryCard = ({ category }: { category: any }) => {
           <div className="w-1/2 h-full pointer-events-auto" onClick={() => nextImage()} />
         </div>
 
+        {/* Interaction Hint Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 md:group-hover:opacity-0 transition-opacity duration-500">
+           <div className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+              <span className="text-[10px] text-white uppercase tracking-[0.2em]">Swipe or Tap</span>
+           </div>
+        </div>
+
         {/* Category Overlay */}
         <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black via-black/40 to-transparent">
           <h4 className="text-xl font-serif font-bold text-white mb-2">{category.title}</h4>
