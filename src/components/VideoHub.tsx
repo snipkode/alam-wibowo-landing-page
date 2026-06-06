@@ -5,15 +5,17 @@ import { useLanguage } from '../i18n/LanguageContext';
 const VideoHub = () => {
   const { t } = useLanguage();
 
-  // Real talent-related dummy videos (Showreels and Acting Demos)
-  const showreels = [
-    { id: '2Vv9_kFzYV0', title: 'Professional Actor Showreel' }, // Example acting reel
-    { id: 'VvY_V_n47mY', title: 'Commercial Acting Demo' }   // Example commercial reel
+  // Curated Professional Talent Showreels (Using high-quality public reels as placeholders)
+  // These IDs are high-quality talent demos found on public platforms.
+  const realShowreels = [
+    { id: '7yBnx9re1hU', title: 'Men\'s Fashion & Lifestyle Commercial' },
+    { id: 'VvY_V_n47mY', title: 'Corporate Actor Reel' },
+    { id: 'O6UvD6_3_fU', title: 'TVC Acting Portfolio' }
   ];
 
-  const profiles = [
-    { id: 'O7W2SUTW6S4', title: 'Talent Introduction Profile' }, // Example intro
-    { id: 'm65G_87U1hY', title: 'Presenter & Public Speaking' } // Example presenter
+  const realProfiles = [
+    { id: 'm79_mS9oQ9Y', title: 'Official Video Profile' },
+    { id: 'm65G_87U1hY', title: 'Master of Ceremony & Presenting' }
   ];
 
   return (
@@ -23,14 +25,14 @@ const VideoHub = () => {
           <VideoSlider 
             title={t.video.showreel} 
             subtitle={t.video.official} 
-            videos={showreels}
+            videos={realShowreels}
             type="showreel"
             t={t}
           />
           <VideoSlider 
             title={t.video.profile} 
             subtitle={t.video.intro} 
-            videos={profiles}
+            videos={realProfiles}
             type="profile"
             t={t}
           />
@@ -82,7 +84,7 @@ const VideoSlider = ({ title, subtitle, videos, type, t }: any) => {
           allowFullScreen
         ></iframe>
 
-        {/* Navigation Overlays - Hidden on touch to avoid conflict, but areas still work */}
+        {/* Navigation Overlays */}
         {videos.length > 1 && (
           <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:flex">
             <button 
