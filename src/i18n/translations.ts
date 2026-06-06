@@ -50,6 +50,15 @@ export const translations = {
       profile: 'Video Profile',
       highlights: 'Highlights',
       contents: 'Video Contents',
+      prev: 'Previous Video',
+      next: 'Next Video',
+    },
+    education: {
+      title: 'Background',
+      heading: 'Education',
+      degree: 'Degree / Major',
+      institution: 'Institution',
+      year: 'Year',
     },
     experience: {
       title: 'Experience',
@@ -116,6 +125,15 @@ export const translations = {
       profile: 'Profil Video',
       highlights: 'Sorotan',
       contents: 'Isi Video',
+      prev: 'Video Sebelumnya',
+      next: 'Video Berikutnya',
+    },
+    education: {
+      title: 'Latar Belakang',
+      heading: 'Pendidikan',
+      degree: 'Gelar / Jurusan',
+      institution: 'Institusi',
+      year: 'Tahun',
     },
     experience: {
       title: 'Pengalaman',
