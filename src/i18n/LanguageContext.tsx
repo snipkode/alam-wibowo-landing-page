@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
-import { type Language, translations } from './translations';
+import { type Language, mergedTranslations } from './translations';
 
 interface LanguageContextType {
   language: Language;
@@ -12,7 +12,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('id'); // Default to Indonesian
 
-  const t = translations[language];
+  const t = mergedTranslations[language];
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

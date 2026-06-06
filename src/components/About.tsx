@@ -1,13 +1,13 @@
 import { useLanguage } from '../i18n/LanguageContext';
 
 const About = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-24 bg-cinematic-black relative overflow-hidden">
       {/* Background Decorative Text */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-serif font-bold text-white/[0.02] whitespace-nowrap pointer-events-none select-none">
-        {language === 'en' ? 'ACTOR PRESENTER' : 'AKTOR PRESENTER'}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-serif font-bold text-white/[0.02] whitespace-nowrap pointer-events-none select-none uppercase">
+        {t.about.backgroundText}
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

@@ -1,25 +1,7 @@
 import { useLanguage } from '../i18n/LanguageContext';
 
 const Education = () => {
-  const { t, language } = useLanguage();
-
-  const educationList = [
-    {
-      year: '2015 - 2019',
-      degree: language === 'en' ? 'Bachelor of Communication Science' : 'Sarjana Ilmu Komunikasi',
-      institution: 'Universitas Padjadjaran',
-    },
-    {
-      year: '2019',
-      degree: language === 'en' ? 'Public Speaking Certification' : 'Sertifikasi Public Speaking',
-      institution: 'Professional Academy',
-    },
-    {
-      year: '2020',
-      degree: language === 'en' ? 'Acting for Film Workshop' : 'Workshop Akting Film',
-      institution: 'Cinematic Arts Institute',
-    }
-  ];
+  const { t } = useLanguage();
 
   return (
     <section className="py-24 bg-cinematic-black">
@@ -29,7 +11,7 @@ const Education = () => {
           <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-12">{t.education.heading}</h3>
           
           <div className="grid gap-8">
-            {educationList.map((item, index) => (
+            {t.education.items.map((item: any, index: number) => (
               <div 
                 key={index} 
                 className="group relative p-8 bg-cinematic-gray border border-white/5 hover:border-gold/30 transition-all duration-500"
