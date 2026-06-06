@@ -31,74 +31,64 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-900 p-8 font-sans">
+    <div className="min-h-screen bg-neutral-900 p-4 md:p-8 font-sans">
       <div className="max-w-6xl mx-auto">
-        <header className="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b border-white/10 pb-4 gap-4">
           <div>
-            <a href="/" className="flex items-center gap-2 text-neutral-400 hover:text-gold mb-2 transition-colors">
-              <ChevronLeft size={16} /> Back to Site
+            <a href="/" className="flex items-center gap-2 text-neutral-400 hover:text-gold mb-1 transition-colors text-xs">
+              <ChevronLeft size={14} /> Back to Site
             </a>
-            <h1 className="text-3xl font-serif font-bold text-white">Content Manager (CMS)</h1>
+            <h1 className="text-xl md:text-3xl font-serif font-bold text-white tracking-tight">Content Manager</h1>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-2 w-full md:w-auto">
             <button 
               onClick={copyToClipboard}
-              className="flex items-center gap-2 px-4 py-2 bg-neutral-800 text-white rounded hover:bg-neutral-700 transition-colors"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-neutral-800 text-white text-xs rounded hover:bg-neutral-700 transition-colors"
             >
-              <Clipboard size={18} /> Copy JSON
+              <Clipboard size={14} /> Copy
             </button>
             <button 
               onClick={downloadJson}
-              className="flex items-center gap-2 px-4 py-2 bg-neutral-800 text-white rounded hover:bg-neutral-700 transition-colors"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 px-3 py-2 bg-neutral-800 text-white text-xs rounded hover:bg-neutral-700 transition-colors"
             >
-              <Download size={18} /> Download
+              <Download size={14} /> Download
             </button>
             <button 
               onClick={handleSave}
-              className="flex items-center gap-2 px-4 py-2 bg-gold text-black font-bold rounded hover:bg-white transition-colors"
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-gold text-black font-bold text-xs rounded hover:bg-white transition-colors"
             >
-              <Save size={18} /> Validate
+              <Save size={14} /> Validate
             </button>
           </div>
         </header>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="flex flex-col h-[70vh]">
-            <label className="text-xs uppercase tracking-widest text-neutral-500 mb-2 font-bold">Edit Content JSON</label>
+        <div className="grid lg:grid-cols-2 gap-4">
+          <div className="flex flex-col h-[50vh] md:h-[70vh]">
+            <label className="text-[10px] uppercase tracking-widest text-neutral-500 mb-2 font-bold">Edit Content JSON</label>
             <textarea 
               value={jsonContent}
               onChange={(e) => setJsonContent(e.target.value)}
-              className="flex-1 w-full bg-black text-green-500 font-mono text-sm p-6 border border-white/5 rounded-sm focus:border-gold outline-none resize-none"
+              className="flex-1 w-full bg-black text-green-500 font-mono text-xs p-4 border border-white/5 rounded-sm focus:border-gold outline-none resize-none"
               spellCheck="false"
             />
           </div>
 
-          <div className="bg-neutral-800/50 p-8 rounded-sm border border-white/5 h-[70vh] overflow-y-auto">
-            <h2 className="text-xl font-serif font-bold text-white mb-6">Instructions</h2>
-            <div className="space-y-6 text-neutral-400 text-sm leading-relaxed">
+          <div className="bg-neutral-800/50 p-6 rounded-sm border border-white/5 h-auto md:h-[70vh] overflow-y-auto">
+            <h2 className="text-lg font-serif font-bold text-white mb-4">Instructions</h2>
+            <div className="space-y-4 text-neutral-400 text-xs leading-relaxed">
               <p>
-                This is a static CMS. Since the browser cannot directly write to your project files, follow these steps to update your website:
+                Static CMS: browser cannot write to project files directly.
               </p>
-              <ol className="list-decimal list-inside space-y-4">
-                <li>
-                  <strong className="text-white">Modify</strong> the JSON data on the left. You can change texts, image URLs, or video IDs for both English and Indonesian.
-                </li>
-                <li>
-                  Click <strong className="text-gold">"Validate"</strong> to ensure your changes are correctly formatted.
-                </li>
-                <li>
-                  Click <strong className="text-white">"Download"</strong> or <strong className="text-white">"Copy JSON"</strong>.
-                </li>
-                <li>
-                  <strong className="text-white">Replace</strong> the content of <code className="bg-black px-1 text-gold">src/data/content.json</code> in your project with the new data.
-                </li>
-                <li>
-                  <strong className="text-white">Redeploy</strong> your website to see the changes live.
-                </li>
+              <ol className="list-decimal list-inside space-y-2">
+                <li><strong className="text-white">Modify</strong> JSON on the left.</li>
+                <li>Click <strong className="text-gold">"Validate"</strong>.</li>
+                <li><strong className="text-white">Copy</strong> or <strong className="text-white">Download</strong>.</li>
+                <li>Replace <code className="bg-black px-1 text-gold">src/data/content.json</code> content.</li>
+                <li><strong className="text-white">Redeploy</strong>.</li>
               </ol>
 
               {status && (
-                <div className={`mt-8 p-4 rounded border ${status.includes('Invalid') ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-gold/10 border-gold text-gold'}`}>
+                <div className={`mt-4 p-3 rounded border text-[10px] ${status.includes('Invalid') ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-gold/10 border-gold text-gold'}`}>
                   {status}
                 </div>
               )}
