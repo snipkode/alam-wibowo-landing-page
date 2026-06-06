@@ -64,20 +64,42 @@ const Gallery = () => {
 
 const CategoryCard = ({ category }: { category: any }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % category.images.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + category.images.length) % category.images.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (diff > 50) {
+      nextImage();
+    } else if (diff < -50) {
+      prevImage();
+    }
+    setTouchStart(null);
   };
 
   return (
     <div className="group flex flex-col h-full">
-      <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-neutral-800">
+      <div 
+        className="relative aspect-[3/4] overflow-hidden rounded-sm bg-neutral-800 touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <img 
           src={category.images[currentIndex]} 
           alt={`${category.title} ${currentIndex + 1}`}
@@ -85,19 +107,27 @@ const CategoryCard = ({ category }: { category: any }) => {
         />
         
         {/* Navigation Arrows */}
-        <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+        <div className="absolute inset-0 flex items-center justify-between px-2 opacity-0 group-hover:opacity-100 lg:group-hover:opacity-100 transition-opacity duration-300 z-20 pointer-events-none">
           <button 
             onClick={prevImage}
-            className="p-2 bg-black/50 text-white hover:bg-gold hover:text-black transition-colors rounded-full"
+            className="p-2 bg-black/50 text-white hover:bg-gold hover:text-black transition-colors rounded-full pointer-events-auto"
+            aria-label="Previous photo"
           >
             <ChevronLeft size={20} />
           </button>
           <button 
             onClick={nextImage}
-            className="p-2 bg-black/50 text-white hover:bg-gold hover:text-black transition-colors rounded-full"
+            className="p-2 bg-black/50 text-white hover:bg-gold hover:text-black transition-colors rounded-full pointer-events-auto"
+            aria-label="Next photo"
           >
             <ChevronRight size={20} />
           </button>
+        </div>
+
+        {/* Mobile Navigation Hint (Tap areas) */}
+        <div className="absolute inset-0 flex md:hidden pointer-events-none">
+          <div className="w-1/2 h-full pointer-events-auto" onClick={() => prevImage()} />
+          <div className="w-1/2 h-full pointer-events-auto" onClick={() => nextImage()} />
         </div>
 
         {/* Category Overlay */}
