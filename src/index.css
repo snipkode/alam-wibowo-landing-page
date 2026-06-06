@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-cinematic-black: #000000;
+  --color-cinematic-gray: #121212;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  background-color: var(--color-cinematic-black);
+  color: #e0e0e0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
