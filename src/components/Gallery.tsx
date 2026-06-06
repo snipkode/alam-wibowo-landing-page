@@ -7,36 +7,36 @@ const Gallery = () => {
       title: 'Professional Look',
       photos: ['Corporate Portrait', 'Business Suit', 'Formal Pose', 'Office Executive'],
       images: [
-        'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1519085115970-36002951576f?q=80&w=600&auto=format&fit=crop'
+        'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1519085115970-36002951576f?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'
       ]
     },
     {
       title: 'Character Look',
       photos: ['Boss Character', 'Lawyer Character', 'Corporate Manager', 'Government Officer'],
       images: [
-        'https://images.unsplash.com/photo-1519085115970-36002951576f?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1556157382-97dee2dcb341?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop'
+        'https://images.unsplash.com/photo-1556157382-97dee2dcb341?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=800&auto=format&fit=crop'
       ]
     },
     {
       title: 'Casual Look',
       photos: ['Smart Casual', 'Lifestyle', 'Friendly Smile', 'Outdoor Portrait'],
       images: [
-        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=600&auto=format&fit=crop'
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop'
       ]
     },
     {
       title: 'Full Body Look',
       photos: ['Standing Pose', 'Walking Pose', 'Action Pose', 'Character Pose'],
       images: [
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=600&auto=format&fit=crop'
+        'https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1512485694743-99a481c24b12?q=80&w=800&auto=format&fit=crop'
       ]
     }
   ];
