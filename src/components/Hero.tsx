@@ -1,6 +1,9 @@
 import { PlayCircle, Download, Mail } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Image Placeholder */}
@@ -16,14 +19,16 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-20 text-center md:text-left">
         <div className="max-w-3xl">
           <h2 className="text-gold text-sm md:text-base font-sans tracking-[0.3em] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            Actor • Talent • Presenter • Digital Creator
+            {t.hero.subtitle}
           </h2>
-          <h1 className="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            ALAM <br /> WIBOWO
+          <h1 className="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-none animate-in fade-in slide-in-from-bottom-6 duration-1000 uppercase">
+            {t.hero.title.split(' ')[0]} <br /> {t.hero.title.split(' ')[1]}
           </h1>
           <p className="text-lg md:text-xl text-neutral-300 mb-8 max-w-xl font-sans leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            Professional Talent for Commercial, Corporate, Film, TVC, and Digital Content.
-            <span className="block mt-2 text-sm text-neutral-400">Playing Age: 28 – 35 Years • Bandung / Jakarta</span>
+            {t.hero.desc}
+            <span className="block mt-2 text-sm text-neutral-400">
+              {t.hero.playingAge}: 28 – 35 Years • {t.hero.location}: Bandung / Jakarta
+            </span>
           </p>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start animate-in fade-in slide-in-from-bottom-10 duration-1000">
@@ -31,19 +36,19 @@ const Hero = () => {
               href="#showreel" 
               className="px-8 py-4 bg-gold text-black font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:bg-white transition-all duration-300"
             >
-              <PlayCircle size={20} /> Watch Showreel
+              <PlayCircle size={20} /> {t.hero.watchShowreel}
             </a>
             <a 
               href="#" 
               className="px-8 py-4 border border-white/30 text-white font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:border-gold hover:text-gold transition-all duration-300"
             >
-              <Download size={20} /> Download CV
+              <Download size={20} /> {t.hero.downloadCv}
             </a>
             <a 
               href="#contact" 
               className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 hover:bg-white/20 transition-all duration-300"
             >
-              <Mail size={20} /> Contact Me
+              <Mail size={20} /> {t.hero.contactMe}
             </a>
           </div>
         </div>

@@ -6,21 +6,24 @@ import Gallery from './components/Gallery';
 import VideoHub from './components/VideoHub';
 import Filmography from './components/Filmography';
 import Contact from './components/Contact';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 function App() {
   return (
-    <div className="bg-cinematic-black text-neutral-200 selection:bg-gold selection:text-black">
-      <Header />
-      <main>
-        <Hero />
-        <Stats />
-        <About />
-        <VideoHub />
-        <Gallery />
-        <Filmography />
-      </main>
-      <Contact />
-    </div>
+    <LanguageProvider>
+      <div className="bg-cinematic-black text-neutral-200 selection:bg-gold selection:text-black">
+        <Header />
+        <main>
+          <Hero />
+          <Stats />
+          <About />
+          <VideoHub />
+          <Gallery />
+          <Filmography />
+        </main>
+        <Contact />
+      </div>
+    </LanguageProvider>
   );
 }
 

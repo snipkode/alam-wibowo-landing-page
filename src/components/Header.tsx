@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,12 +16,16 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'Showreel', href: '#showreel' },
-    { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.home, href: '#' },
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.showreel, href: '#showreel' },
+    { name: t.nav.gallery, href: '#gallery' },
+    { name: t.nav.contact, href: '#contact' },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'id' : 'en');
+  };
 
   return (
     <header 
@@ -33,25 +39,44 @@ const Header = () => {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-sm uppercase tracking-widest hover:text-gold transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center space-x-8">
+          <nav className="flex space-x-8">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-[10px] uppercase tracking-widest hover:text-gold transition-colors font-bold"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+          
+          {/* Language Toggle */}
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full hover:border-gold hover:text-gold transition-all duration-300 text-[10px] font-bold uppercase tracking-widest"
+          >
+            <Globe size={12} />
+            {language === 'en' ? 'ID' : 'EN'}
+          </button>
+        </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-gold"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 px-2 py-1 border border-white/10 rounded-full text-[10px] font-bold"
+          >
+            {language === 'en' ? 'ID' : 'EN'}
+          </button>
+          <button 
+            className="text-gold"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}

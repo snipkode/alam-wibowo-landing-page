@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Gallery = () => {
+  const { t, language } = useLanguage();
+
   const categories = [
     {
-      title: 'Professional Look',
-      photos: ['Corporate Portrait', 'Business Suit', 'Formal Pose', 'Office Executive'],
+      title: language === 'en' ? 'Professional Look' : 'Tampilan Profesional',
+      photos: language === 'en' 
+        ? ['Corporate Portrait', 'Business Suit', 'Formal Pose', 'Office Executive']
+        : ['Potret Korporat', 'Setelan Bisnis', 'Pose Formal', 'Eksekutif Kantor'],
       images: [
         'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1519085115970-36002951576f?q=80&w=800&auto=format&fit=crop',
@@ -13,8 +18,10 @@ const Gallery = () => {
       ]
     },
     {
-      title: 'Character Look',
-      photos: ['Boss Character', 'Lawyer Character', 'Corporate Manager', 'Government Officer'],
+      title: language === 'en' ? 'Character Look' : 'Tampilan Karakter',
+      photos: language === 'en'
+        ? ['Boss Character', 'Lawyer Character', 'Corporate Manager', 'Government Officer']
+        : ['Karakter Bos', 'Karakter Pengacara', 'Manajer Korporat', 'Pejabat Pemerintah'],
       images: [
         'https://images.unsplash.com/photo-1556157382-97dee2dcb341?q=80&w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop',
@@ -22,8 +29,10 @@ const Gallery = () => {
       ]
     },
     {
-      title: 'Casual Look',
-      photos: ['Smart Casual', 'Lifestyle', 'Friendly Smile', 'Outdoor Portrait'],
+      title: language === 'en' ? 'Casual Look' : 'Tampilan Kasual',
+      photos: language === 'en'
+        ? ['Smart Casual', 'Lifestyle', 'Friendly Smile', 'Outdoor Portrait']
+        : ['Kasual Pintar', 'Gaya Hidup', 'Senyum Ramah', 'Potret Luar Ruangan'],
       images: [
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop',
@@ -31,8 +40,10 @@ const Gallery = () => {
       ]
     },
     {
-      title: 'Full Body Look',
-      photos: ['Standing Pose', 'Walking Pose', 'Action Pose', 'Character Pose'],
+      title: language === 'en' ? 'Full Body Look' : 'Tampilan Seluruh Tubuh',
+      photos: language === 'en'
+        ? ['Standing Pose', 'Walking Pose', 'Action Pose', 'Character Pose']
+        : ['Pose Berdiri', 'Pose Berjalan', 'Pose Aksi', 'Pose Karakter'],
       images: [
         'https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=800&auto=format&fit=crop',
         'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=800&auto=format&fit=crop',
@@ -44,17 +55,17 @@ const Gallery = () => {
   return (
     <section id="gallery" className="py-24 bg-cinematic-gray">
       <div className="container mx-auto px-6 text-center mb-16">
-        <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">Portfolio</h2>
-        <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Photo Gallery</h3>
+        <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">{t.gallery.title}</h2>
+        <h3 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">{t.gallery.heading}</h3>
         <p className="text-neutral-400 max-w-2xl mx-auto">
-          Explore the range of professional looks and character portrayals suitable for various production needs.
+          {t.gallery.desc}
         </p>
       </div>
 
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {categories.map((cat, index) => (
-            <CategoryCard key={index} category={cat} />
+            <CategoryCard key={index} category={cat} swipeHint={t.gallery.swipeHint} />
           ))}
         </div>
       </div>
@@ -62,7 +73,7 @@ const Gallery = () => {
   );
 };
 
-const CategoryCard = ({ category }: { category: any }) => {
+const CategoryCard = ({ category, swipeHint }: { category: any, swipeHint: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -133,7 +144,7 @@ const CategoryCard = ({ category }: { category: any }) => {
         {/* Interaction Hint Overlay */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 md:group-hover:opacity-0 transition-opacity duration-500">
            <div className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
-              <span className="text-[10px] text-white uppercase tracking-[0.2em]">Swipe or Tap</span>
+              <span className="text-[10px] text-white uppercase tracking-[0.2em]">{swipeHint}</span>
            </div>
         </div>
 

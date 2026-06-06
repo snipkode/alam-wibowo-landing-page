@@ -1,17 +1,19 @@
+import { useLanguage } from '../i18n/LanguageContext';
+
 const Filmography = () => {
+  const { t, language } = useLanguage();
+
   const projects = [
-    { year: '2026', title: 'Green SM Commercial', role: 'Main Talent' },
-    { year: '2026', title: 'Corporate Brand Campaign', role: 'Presenter' },
-    { year: '2025', title: 'Educational Video Series', role: 'Host' },
-    { year: '2025', title: 'Digital Marketing Campaign', role: 'Supporting Talent' },
-    { year: '2025', title: 'Business Profile Video', role: 'Lead Presenter' },
+    { year: '2026', title: language === 'en' ? 'Green SM Commercial' : 'Iklan Green SM', role: language === 'en' ? 'Main Talent' : 'Pemeran Utama' },
+    { year: '2026', title: language === 'en' ? 'Corporate Brand Campaign' : 'Kampanye Brand Korporat', role: language === 'en' ? 'Presenter' : 'Presenter' },
+    { year: '2025', title: language === 'en' ? 'Educational Video Series' : 'Seri Video Edukasi', role: language === 'en' ? 'Host' : 'Pembawa Acara' },
+    { year: '2025', title: language === 'en' ? 'Digital Marketing Campaign' : 'Kampanye Pemasaran Digital', role: language === 'en' ? 'Supporting Talent' : 'Pemeran Pendukung' },
+    { year: '2025', title: language === 'en' ? 'Business Profile Video' : 'Video Profil Bisnis', role: language === 'en' ? 'Lead Presenter' : 'Presenter Utama' },
   ];
 
-  const skills = [
-    'Acting Dialogue', 'Commercial Acting', 'Corporate Acting', 'Presenter', 
-    'Public Speaking', 'Interview Simulation', 'Voice Over', 'Improvisation', 
-    'Content Creation', 'AI Content Production'
-  ];
+  const skills = language === 'en' 
+    ? ['Acting Dialogue', 'Commercial Acting', 'Corporate Acting', 'Presenter', 'Public Speaking', 'Interview Simulation', 'Voice Over', 'Improvisation', 'Content Creation', 'AI Content Production']
+    : ['Dialog Akting', 'Akting Komersial', 'Akting Korporat', 'Presenter', 'Public Speaking', 'Simulasi Wawancara', 'Voice Over', 'Improvisasi', 'Pembuatan Konten', 'Produksi Konten AI'];
 
   return (
     <section className="py-24 bg-cinematic-gray">
@@ -19,8 +21,8 @@ const Filmography = () => {
         <div className="grid lg:grid-cols-3 gap-16">
           {/* Filmography */}
           <div className="lg:col-span-2">
-            <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">Experience</h2>
-            <h3 className="text-4xl font-serif font-bold text-white mb-12">Filmography</h3>
+            <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">{t.experience.title}</h2>
+            <h3 className="text-4xl font-serif font-bold text-white mb-12">{t.experience.heading}</h3>
             <div className="space-y-0">
               {projects.map((project, index) => (
                 <div 
@@ -50,8 +52,8 @@ const Filmography = () => {
 
           {/* Skills */}
           <div>
-            <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">Expertise</h2>
-            <h3 className="text-4xl font-serif font-bold text-white mb-12">Skills</h3>
+            <h2 className="text-gold uppercase tracking-[0.2em] text-sm mb-4">{t.experience.expertise}</h2>
+            <h3 className="text-4xl font-serif font-bold text-white mb-12">{t.experience.skills}</h3>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill, index) => (
                 <span 
@@ -68,10 +70,12 @@ const Filmography = () => {
                 <div className="w-8 h-8 border-t border-r border-gold" />
               </div>
               <p className="text-neutral-400 italic text-sm relative z-10">
-                "Professional, punctual, and easy to direct. Strong communication and excellent camera presence."
+                {language === 'en' 
+                  ? '"Professional, punctual, and easy to direct. Strong communication and excellent camera presence."' 
+                  : '"Profesional, tepat waktu, dan mudah diarahkan. Komunikasi kuat dan kehadiran kamera yang luar biasa."'}
               </p>
               <p className="text-gold text-xs uppercase tracking-widest mt-4 font-bold">
-                — Production Team
+                — {language === 'en' ? 'Production Team' : 'Tim Produksi'}
               </p>
             </div>
           </div>

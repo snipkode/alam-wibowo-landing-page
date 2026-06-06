@@ -1,13 +1,16 @@
 import { Maximize2, Weight, Scissors, Eye, Languages, Calendar } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Stats = () => {
+  const { t, language } = useLanguage();
+
   const stats = [
-    { icon: <Maximize2 size={24} />, label: 'Height', value: '175 cm' },
-    { icon: <Weight size={24} />, label: 'Weight', value: '75 kg' },
-    { icon: <Scissors size={24} />, label: 'Hair', value: 'Black' },
-    { icon: <Eye size={24} />, label: 'Eye Color', value: 'Dark Brown' },
-    { icon: <Languages size={24} />, label: 'Languages', value: 'ID, Sundanese' },
-    { icon: <Calendar size={24} />, label: 'Availability', value: 'Ready' },
+    { icon: <Maximize2 size={24} />, label: t.stats.height, value: '175 cm' },
+    { icon: <Weight size={24} />, label: t.stats.weight, value: '75 kg' },
+    { icon: <Scissors size={24} />, label: t.stats.hair, value: language === 'en' ? 'Black' : 'Hitam' },
+    { icon: <Eye size={24} />, label: t.stats.eyeColor, value: language === 'en' ? 'Dark Brown' : 'Cokelat Tua' },
+    { icon: <Languages size={24} />, label: t.stats.languages, value: language === 'en' ? 'ID, Sundanese' : 'ID, Sunda' },
+    { icon: <Calendar size={24} />, label: t.stats.availability, value: t.stats.ready },
   ];
 
   return (
